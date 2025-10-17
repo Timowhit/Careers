@@ -1,0 +1,710 @@
+<!-- Timothy Whitehead's Resume -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timothy Whitehead - Resume</title>
+
+    <!-- Stylesheet for the resume -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .resume-container {
+            max-width: 1150px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .resume-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: shimmer 8s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: translateX(-100px) translateY(-100px); }
+            50% { transform: translateX(100px) translateY(100px); }
+        }
+
+        .header h1 {
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            padding: 8px 16px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+            background: rgba(255,255,255,0.2);
+        }
+
+        .contact-icon {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 10px;
+        }
+
+        .right-sidebar {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 40px 30px;
+            border-right: 3px solid #e9ecef;
+            max-width: 300px;
+            justify-content: center;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #3498db;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: #e74c3c;
+        }
+
+        .experience-item, .project-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-left: 4px solid #3498db;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .experience-item:hover, .project-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .job-title {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .company {
+            font-weight: 600;
+            color: #3498db;
+            margin-bottom: 5px;
+        }
+
+        .duration {
+            font-style: italic;
+            color: #7f8c8d;
+            margin-bottom: 12px;
+            font-size: 0.9em;
+        }
+
+        .responsibilities {
+            list-style: none;
+        }
+
+        .responsibilities li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .responsibilities li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-size: 0.8em;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+        }
+
+        .skill-item {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 0.85em;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: scale(1.05);
+        }
+
+        .education-item {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-left: 4px solid #e74c3c;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .education-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .school-name {
+            font-weight: 700;
+            color: #2c3e50;
+            font-size: 1.1em;
+        }
+
+        .degree {
+            color: #e74c3c;
+            font-weight: 600;
+            margin: 5px 0;
+        }
+
+        .certifications {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+
+        .cert-item {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 0.85em;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .cert-item:hover {
+            transform: scale(1.02);
+        }
+
+        .languages {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .language-item {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .language-item:hover {
+            transform: scale(1.05);
+        }
+
+        .github-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .github-link:hover {
+            color: #2980b9;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .resume-container {
+                border-radius: 10px;
+                margin: 0;
+            }
+            
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+            
+            .contact-item {
+                font-size: 0.9em;
+                padding: 6px 12px;
+            }
+            
+            .header h1 {
+                font-size: 2.2em;
+                margin-bottom: 15px;
+            }
+
+            .right-sidebar, .content {
+                padding: 25px 20px;
+                justify-self: center;
+            }
+            
+            .section {
+                margin-bottom: 25px;
+            }
+            
+            .section-title {
+                font-size: 1.2em;
+                margin-bottom: 15px;
+            }
+            
+            .skills-grid, .certifications {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            
+            .skill-item, .cert-item {
+                padding: 10px 15px;
+                font-size: 0.9em;
+            }
+            
+            .experience-item, .project-item, .education-item {
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+            
+            .job-title {
+                font-size: 1.1em;
+                line-height: 1.3;
+            }
+            
+            .responsibilities li {
+                font-size: 0.95em;
+                line-height: 1.5;
+                margin-bottom: 10px;
+            }
+            
+            .languages {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .language-item {
+                text-align: center;
+                padding: 10px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+            
+            .header {
+                padding: 25px 15px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .contact-item {
+                font-size: 0.85em;
+                padding: 5px 10px;
+            }
+            
+            .right-sidebar, .content {
+                padding: 20px 15px;
+                justify-content: center;
+            }
+            
+            .section-title {
+                font-size: 1.1em;
+            }
+            
+            .experience-item, .project-item, .education-item {
+                padding: 12px;
+            }
+            
+            .job-title {
+                font-size: 1em;
+            }
+            
+            .responsibilities li {
+                font-size: 0.9em;
+                padding-left: 15px;
+            }
+            
+            .skill-item, .cert-item, .language-item {
+                font-size: 0.85em;
+                padding: 8px 12px;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .resume-container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .experience-item:hover, .project-item:hover {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<!-- ---------------------------------------------------- -->
+
+<!-- Content -->
+<body>
+    <!-- Resume Content -->
+    <div class="resume-container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1>Timothy Whitehead</h1>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <svg class="contact-icon" viewBox="0 0 24 24">
+                        <path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" />
+                    </svg>
+                    Gilbert, AZ 85298
+                </div>
+                <div class="contact-item">
+                    <svg class="contact-icon" viewBox="0 0 24 24">
+                        <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z" />
+                    </svg>
+                    (480) 868-3355
+                </div>
+                <div class="contact-item">
+                    <svg class="contact-icon" viewBox="0 0 24 24">
+                        <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" />
+                    </svg>
+                    whiteheadt4@gmail.com
+                </div>
+            </div>
+        </header>
+
+<!-- ------------------------------------------------------ -->
+
+        <!-- Main Content Section -->
+        <div class="main-content">
+                        <main class="content">
+                <section class="section">
+                    <h2 class="section-title">Professional Summary</h2>
+                    <p style="font-size: 1.1em; line-height: 1.7; color: #555;">
+                        Dedicated and detail-oriented IT Operations Engineer with a strong foundation in computer programming and hands-on experience in manufacturing environments. Proven ability to manage IT systems, troubleshoot technical issues, and support operational efficiency. Adept at collaborating with cross-functional teams to implement technology solutions that enhance productivity and ensure quality standards. Committed to continuous learning and professional growth in the field of IT and software development.
+                    </p>
+                </section>
+
+<!-- ------------------------------------------------------ -->
+
+                <section class="section">
+                    <h2 class="section-title">Experience</h2>
+                    
+                    <div class="experience-item">
+                        <div class="job-title">IT Operations Engineer</div>
+                        <div class="company">Magna Steyr</div>
+                        <div class="duration">August 2025 - Present</div>
+                        <ul class="responsibilities">
+                            <li>Managed IT operations and support for manufacturing systems, reducing downtime by 64% on average per month and ensuring optimal performance during production hours.</li>
+                            <li>Implemented system monitoring tools to proactively identify and resolve issues</li>
+                            <li>Facilitated communication between IT and production teams to align technology solutions with operational needs</li>
+                            <li>Developed and maintained documentation for IT processes and procedures</li>
+                            <li>Provided training and support to end-users on new systems and tools</li>
+                            <li>Participated in continuous improvement initiatives to enhance IT service delivery</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-title">Operator</div>
+                        <div class="company">Magna Steyr</div>
+                        <div class="duration">October 2024 - August 2025</div>
+                        <ul class="responsibilities">
+                            <li>Performed hands-on assembly, inspection, and rework of automotive components in a fast-paced production environment</li>
+                            <li>Conducted visual and functional inspections to identify non-conforming parts and ensured compliance with quality standards</li>
+                            <li>Followed MaFact/5S principles to maintain an organized, safe, and efficient workstation</li>
+                            <li>Operated and maintained machinery, reported malfunctions, and assisted in minor equipment troubleshooting</li>
+                            <li>Collaborated with quality and engineering teams to execute rework procedures and support process improvements</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-title">Artist & Equipment Coordinator</div>
+                        <div class="company">CuteBee Facepainting</div>
+                        <div class="duration">January 2016 - Present</div>
+                        <ul class="responsibilities">
+                            <li>Provide artistic services at events including face painting, henna tattoos, airbrush tattoos, glitter tattoos, balloon twisting, and clothing stylization</li>
+                            <li>Deliver high-quality, customer-focused art with an emphasis on speed, safety, and cleanliness</li>
+                            <li>Maintain and troubleshoot artistic equipment including airbrush tools and compressors</li>
+                            <li>Monitor and manage inventory of supplies across multiple event types</li>
+                            <li>Adapt artistic services to diverse age groups, client themes, and event settings</li>
+                        </ul>
+                    </div>
+<!--
+                    <div class="experience-item">
+                        <div class="job-title">General Manager</div>
+                        <div class="company">Little Caesars LLC</div>
+                        <div class="duration">June 2024 - October 2024</div>
+                        <ul class="responsibilities">
+                            <li>Managed day-to-day operations and enforced cleanliness and safety standards</li>
+                            <li>Led maintenance of equipment and ensured adherence to operational procedures</li>
+                            <li>Prioritized precision in inventory control and waste reduction</li>
+                        </ul>
+                    </div>
+                -->
+                    <div class="experience-item">
+                        <div class="job-title">Technician</div>
+                        <div class="company">Special Devices Inc.</div>
+                        <div class="duration">June 2020 - January 2021</div>
+                        <ul class="responsibilities">
+                            <li>Assembled, tested, and reworked complex electronic and mechanical systems, including pyrotechnic devices</li>
+                            <li>Calibrated and maintained automated machinery and test equipment</li>
+                            <li>Read and followed schematics, blueprints, and technical documentation to ensure accuracy</li>
+                            <li>Adhered to strict quality control, documentation, and safety standards in production environments</li>
+                            <li>Collaborated with engineers to improve reliability and process efficiency</li>
+                        </ul>
+                    </div>
+                </section>
+
+<!-- ----------------------------------------------------- -->
+
+                <section class="section">
+                    <h2 class="section-title">Education</h2>
+                    <div class="education-item">
+                        <div class="school-name">Brigham Young University</div>
+                        <div class="degree">Bachelor of Science in Computer Programming</div>
+                        <div class="duration">Expected: September 2027</div>
+                        <div style="margin-top: 10px; font-size: 0.9em; color: #7f8c8d;">
+                            GPA: 3.1<br>
+                            PathwayConnect Program<br>
+                            <br>
+                            Relevant Coursework: Data Structures and Algorithms, Database Management Systems, Web Development, Software Engineering Principles, Operating Systems, Network Fundamentals<br>
+                        </div>
+                    </div>
+                    <div class="education-item">
+                        <div class="school-name">Basha High School</div>
+                        <div class="degree">High School Diploma</div>
+                        <div class="duration">Sept. 2017 - June 2021</div>
+                        <div style="margin-top: 10px; font-size: 0.9em; color: #7f8c8d;">
+                            GPA: 3.0<br>
+                            Honors Graduate<br>
+                            Future Preparedness Club President 2019-2021<br>
+                            Concert Choir Chair member 2018-2020<br>
+                            Show Choir Member 2018-2020<br>
+                            Marching Band Baritone Saxophonist 2019-2020<br>
+                            Oldies But Goodies Club Chair Member 2019-2020<br>
+                            PAH Club Member 2019-2020<br>
+                            Performing Arts Participant 2017-2021<br>
+                            Real Talk Club Member 2019-2020<br>
+                            Swim and Dive Member 2017-2018<br>
+                            Tri M Society Treasurer 2019-2020<br>
+                        </div>
+                    </div>
+                </section>
+
+<!-- ----------------------------------------------------- -->
+
+                <section class="section">
+                    <h2 class="section-title">Projects</h2>
+                    
+                    <div class="project-item">
+                        <div class="job-title">Stock Trading Automation Platform</div>
+                        <div class="company">Python | Personal Project</div>
+                        <ul class="responsibilities">
+                            <li>Built a modular system using the Robinhood API for automating stock, options, and crypto trades</li>
+                            <li>Implemented functions for real-time order tracking, filtering, and cancellation with custom export tools</li>
+                            <li><strong>GitHub:</strong> <a href="https://github.com/Timowhit/Trading-Bot" class="github-link">github.com/Timowhit/Trading-Bot</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="job-title">Web Dashboard for Trading Analytics</div>
+                        <div class="company">HTML/CSS/JavaScript | Ongoing</div>
+                        <ul class="responsibilities">
+                            <li>Developed a front-end dashboard to visualize trading data and performance trends</li>
+                            <li>Designed backend logic for processing trade history and equity reports</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="job-title">Intro to Programming Classwork Collection</div>
+                        <div class="company">Python | GitHub Repository</div>
+                        <ul class="responsibilities">
+                            <li>Completed a wide range of structured exercises focused on control flow, loops, conditionals, and basic functions</li>
+                            <li>Gained hands-on experience with user input, data types, and debugging within beginner-level applications</li>
+                            <li><strong>GitHub:</strong> <a href="https://github.com/Timowhit/Intro-to-Programming-Classwork/tree/main/Coding_Class_Work" class="github-link">github.com/Timowhit/Intro-to-Programming-Classwork</a></li>
+                        </ul>
+                    </div>
+                </section>
+            </main>
+
+<!-- ---------------------------------------------------------- -->
+
+            <aside class="right-sidebar">
+                <section class="section">
+                    <h2 class="section-title">Skills</h2>
+                    <div class="skills-grid">
+                        <div class="skill-item">Python</div>
+                        <div class="skill-item">HTML</div>
+                        <div class="skill-item">CSS</div>
+                        <div class="skill-item">JavaScript</div>
+                        <div class="skill-item">SQL</div>
+                        <div class="skill-item">JSON</div>
+                        <div class="skill-item">C#</div>
+                        <div class="skill-item">VS Code</div>
+                        <div class="skill-item">Git</div>
+                        <div class="skill-item">API Integration</div>
+                        <div class="skill-item">MES Systems</div>
+                        <div class="skill-item">PRODAP</div>
+                        <div class="skill-item">Ignition</div>
+                        <div class="skill-item">JIRA</div>
+                        <div class="skill-item">Confluence</div>
+                        <div class="skill-item">ADR</div>
+                        <div class="skill-item">SharePoint</div>
+                        <div class="skill-item">Quality Control</div>
+                        <div class="skill-item">Root Cause Analysis</div>
+                        <div class="skill-item">5S/MaFact</div>
+                        <div class="skill-item">SWIM Methodology</div>
+                        <div class="skill-item">Equipment Calibration</div>
+                        <div class="skill-item">A-B Troubleshooting</div>
+                        <div class="skill-item">MS Excel</div>
+                        <div class="skill-item">Technical Schematics</div>
+                        <div class="skill-item">FANUC</div>
+                        <div class="skill-item">Dürr</div>
+                        <div class="skill-item">Operator Training</div>                        
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Certifications</h2>
+                    <div class="certifications">
+                        <div class="cert-item">(CAPM) Certified Associate in Project Management</div>
+                        <div class="cert-item">CPR/AED Certified</div>
+                        <div class="cert-item">Fire Safety Training</div>
+                        <div class="cert-item">Hydraulic Tools Safety</div>
+                        <div class="cert-item">Universal Waste Control</div>
+                        <div class="cert-item">MaFact/5S Training</div>
+                        <div class="cert-item">Fire Suppression</div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Languages</h2>
+                    <div class="languages">
+                        <div class="language-item">English (Fluent)</div>
+                        <div class="language-item">Spanish (Fluent)</div>
+                        <div class="language-item">Japanese (Basic)</div>
+                    </div>
+                </section>
+            </aside>
+        </div>
+    </div>
+</body>
+</html>
+<!-- End of HTML document -->
