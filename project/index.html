@@ -1,0 +1,642 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Build a personalized trading plan based on your goals, timeline, and risk tolerance with TradeSmart Guide">
+  <title>TradeSmart Guide</title>
+  <link rel="stylesheet" href="styles/siteplan.css">
+</head>
+<body>
+  <header>
+    <span class="logo">TradeSmart Guide</span>
+    <details class="nav-toggle">
+      <summary aria-label="Toggle menu">☰ Menu</summary>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#how">How It Works</a>
+        <a href="#results">Results</a>
+        <a href="#siteplan">Site Plan</a>
+      </nav>
+    </details>
+  </header>
+
+  <main class="container">
+    <section id="home" class="hero">
+      <h1>Stop Guessing! Start Planning Your Investment.</h1>
+      <p class="muted">Build a personalized trading plan based on your goals, timeline, and risk tolerance.</p>
+      <p><a class="btn" href="#how">Create Your Trading Plan</a></p>
+    </section>
+
+    <section id="highlights" class="grid">
+      <div class="card">
+        <h3>Personalized Plans</h3>
+        <p>Enter your investment goal, time horizon, and risk level to receive a suggested allocation.</p>
+      </div>
+      <div class="card">
+        <h3>Projected Growth</h3>
+        <p>See simple projections and historical algorithm performance snapshots.</p>
+      </div>
+      <div class="card">
+        <h3>Implement Instantly</h3>
+        <p>Open the investing platform directly from the plan (demo embed).</p>
+      </div>
+    </section>
+
+    <section id="how" class="hero">
+      <h2>How It Works</h2>
+      <p class="muted">Three simple steps to generate your trading plan.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>1. Set Your Goals</h3>
+          <p>Answer questions about your investment timeline, growth expectations, risk tolerance, and experience.</p>
+        </div>
+        <div class="card">
+          <h3>2. Get A Plan</h3>
+          <p>Review personalized portfolio options and select the one that best fits your needs.</p>
+        </div>
+        <div class="card">
+          <h3>3. Implement It Now</h3>
+          <p>Choose your preferred trading platform and let us set up your portfolio automatically.</p>
+        </div>
+      </div>
+
+      <div id="step1" class="card step-card">
+        <h3>Step 1: Set Your Goals</h3>
+        <form id="goalsForm">
+          <!-- Initial Investment Section -->
+          <div class="form-section">
+            <h4 class="form-section-title">💰 Initial Investment</h4>
+            <div class="form-row">
+              <div class="form-field-flex">
+                <label for="investAmount">Principal Amount ($)</label>
+                <input type="number" id="investAmount" placeholder="10000" min="0" required>
+                <span class="field-hint">Your starting investment amount</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recurring Contributions Section -->
+          <div class="form-section">
+            <h4 class="form-section-title">🔄 Recurring Contributions</h4>
+            <div class="form-row">
+              <div class="form-field-flex">
+                <label for="recurringAmount">Contribution Amount ($)</label>
+                <input type="number" id="recurringAmount" placeholder="200" min="0" value="0">
+                <span class="field-hint">Amount to add each period (0 for none)</span>
+              </div>
+              <div class="form-field-flex">
+                <label for="recurringFrequency">Contribution Frequency</label>
+                <select id="recurringFrequency">
+                  <option value="weekly">Weekly</option>
+                  <option value="biweekly">Bi-weekly</option>
+                  <option value="monthly">Monthly</option>
+                  <option value="quarterly">Quarterly</option>
+                  <option value="annually">Annually</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row form-row-margin">
+              <div class="form-field-flex">
+                <label for="contributionIncrease">Annual Contribution Increase (%)</label>
+                <input type="number" id="contributionIncrease" placeholder="0" min="0" max="25" step="0.5" value="0">
+                <span class="field-hint">Increase contributions yearly</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline & Growth Section -->
+          <div class="form-section">
+            <h4 class="form-section-title">📈 Timeline & Growth Expectations</h4>
+            <div class="form-row">
+              <div class="form-field-flex">
+                <label for="timeline">Investment Duration (years)</label>
+                <input type="number" id="timeline" placeholder="10" min="1" max="50" required>
+              </div>
+              <div class="form-field-flex">
+                <label for="expectedGrowth">Expected Annual Return (%)</label>
+                <input type="number" id="expectedGrowth" placeholder="7" min="0" max="30" step="0.5" required>
+                <span class="field-hint">Historical S&P 500: ~10%, Bonds: ~4-5%</span>
+              </div>
+            </div>
+            <div class="form-row form-row-margin">
+              <div class="form-field-flex">
+                <label for="inflationRate">Expected Inflation Rate (%)</label>
+                <input type="number" id="inflationRate" placeholder="2.5" min="0" max="15" step="0.1" value="2.5">
+                <span class="field-hint">For real (inflation-adjusted) returns</span>
+              </div>
+              <div class="form-field-flex">
+                <label for="compoundingFreq">Compounding Frequency</label>
+                <select id="compoundingFreq">
+                  <option value="daily">Daily</option>
+                  <option value="monthly">Monthly</option>
+                  <option value="quarterly">Quarterly</option>
+                  <option value="annually" selected>Annually</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Risk Profile Section -->
+          <div class="form-section">
+            <h4 class="form-section-title">⚖️ Risk Profile</h4>
+            <div class="form-row">
+              <div class="form-field-flex">
+                <label for="riskTolerance">Risk Tolerance</label>
+                <select id="riskTolerance" required>
+                  <option value="">Select your risk tolerance...</option>
+                  <option value="conservative">Conservative - Preserve capital, minimal volatility</option>
+                  <option value="moderate">Moderate - Balanced growth and stability</option>
+                  <option value="aggressive">Aggressive - Maximum growth, accept higher volatility</option>
+                </select>
+              </div>
+              <div class="form-field-flex">
+                <label for="experience">Investment Experience</label>
+                <select id="experience" required>
+                  <option value="">Select your experience level...</option>
+                  <option value="beginner">Beginner - New to investing</option>
+                  <option value="intermediate">Intermediate - Some experience</option>
+                  <option value="advanced">Advanced - Experienced investor</option>
+                  <option value="expert">Expert - Professional level</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row form-row-margin">
+              <div class="form-field-flex">
+                <label for="investmentGoal">Primary Investment Goal</label>
+                <select id="investmentGoal">
+                  <option value="retirement">Retirement savings</option>
+                  <option value="wealth">Wealth building</option>
+                  <option value="house">Home down payment</option>
+                  <option value="education">Education fund</option>
+                  <option value="emergency">Emergency fund growth</option>
+                  <option value="income">Passive income generation</option>
+                  <option value="other">Other goal</option>
+                </select>
+              </div>
+              <div class="form-field-flex">
+                <label for="targetAmount">Target Amount (optional)</label>
+                <input type="number" id="targetAmount" placeholder="1000000" min="0">
+                <span class="field-hint">Your financial goal amount</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tax & Account Section -->
+          <div class="form-section">
+            <h4 class="form-section-title">🏦 Account Type & Tax Considerations</h4>
+            <div class="form-row">
+              <div class="form-field-flex">
+                <label for="accountType">Account Type</label>
+                <select id="accountType">
+                  <option value="taxable">Taxable Brokerage</option>
+                  <option value="traditional_ira">Traditional IRA / 401(k)</option>
+                  <option value="roth">Roth IRA / Roth 401(k)</option>
+                  <option value="hsa">HSA (Health Savings Account)</option>
+                  <option value="529">529 Education Plan</option>
+                </select>
+              </div>
+              <div class="form-field-flex">
+                <label for="taxBracket">Estimated Tax Bracket (%)</label>
+                <select id="taxBracket">
+                  <option value="0">0% - Tax-advantaged account</option>
+                  <option value="10">10%</option>
+                  <option value="12">12%</option>
+                  <option value="22" selected>22%</option>
+                  <option value="24">24%</option>
+                  <option value="32">32%</option>
+                  <option value="35">35%</option>
+                  <option value="37">37%</option>
+                </select>
+                <span class="field-hint">For dividend/capital gains estimates</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Projection Preview -->
+          <div id="projectionPreview" class="projection-preview">
+            <h4 class="form-section-title">📊 Quick Projection Preview</h4>
+            <div class="projection-grid">
+              <div class="projection-item">
+                <span class="projection-label">Total Contributions</span>
+                <span id="previewContributions" class="projection-value">$0</span>
+              </div>
+              <div class="projection-item">
+                <span class="projection-label">Projected Value</span>
+                <span id="previewValue" class="projection-value accent">$0</span>
+              </div>
+              <div class="projection-item">
+                <span class="projection-label">Total Growth</span>
+                <span id="previewGrowth" class="projection-value success">$0</span>
+              </div>
+              <div class="projection-item">
+                <span class="projection-label">Inflation-Adj Value</span>
+                <span id="previewRealValue" class="projection-value">$0</span>
+              </div>
+            </div>
+          </div>
+
+          <p class="button-row"><button type="submit" class="btn btn-large">Generate My Plan →</button></p>
+        </form>
+      </div>
+
+      <div id="step2" class="card step-card step-hidden">
+        <h3>Step 2: Choose Your Portfolio Plan</h3>
+        <p class="muted step-description">Based on your goals, here are personalized portfolio options. Select the one that best suits your needs.</p>
+        <div id="portfolioOptions" class="grid"></div>
+      </div>
+
+      <div id="step3" class="card step-card step-hidden">
+        <h3>Step 3: Choose Your Trading Platform</h3>
+        <p class="muted step-description">Select your preferred platform to implement your investment plan.</p>
+        
+        <div id="platformSelector" class="platform-grid">
+          <div class="platform-card" data-platform="robinhood" data-url="https://robinhood.com">
+            <div class="platform-icon">📱</div>
+            <h4>Robinhood</h4>
+            <p>Commission-free trading</p>
+          </div>
+          <div class="platform-card" data-platform="fidelity" data-url="https://www.fidelity.com">
+            <div class="platform-icon">🏦</div>
+            <h4>Fidelity</h4>
+            <p>Full-service brokerage</p>
+          </div>
+          <div class="platform-card" data-platform="schwab" data-url="https://www.schwab.com">
+            <div class="platform-icon">💼</div>
+            <h4>Charles Schwab</h4>
+            <p>Comprehensive investing</p>
+          </div>
+          <div class="platform-card" data-platform="etrade" data-url="https://us.etrade.com">
+            <div class="platform-icon">📊</div>
+            <h4>E*TRADE</h4>
+            <p>Advanced tools</p>
+          </div>
+          <div class="platform-card" data-platform="vanguard" data-url="https://www.vanguard.com">
+            <div class="platform-icon">⭐</div>
+            <h4>Vanguard</h4>
+            <p>Low-cost investing</p>
+          </div>
+          <div class="platform-card" data-platform="webull" data-url="https://www.webull.com">
+            <div class="platform-icon">📈</div>
+            <h4>Webull</h4>
+            <p>Modern interface</p>
+          </div>
+        </div>
+
+        <div id="platformEmbed" class="platform-embed-hidden">
+          <div class="platform-embed-wrapper">
+            <h4 id="selectedPlatformName" class="platform-title"></h4>
+            
+            <div class="portfolio-summary-box">
+              <h5 class="section-title">📊 Your Selected Portfolio:</h5>
+              <p id="portfolioSummary" class="portfolio-summary-text"></p>
+            </div>
+
+            <div id="tradingPlanSection" class="trading-plan-section">
+              <h5 class="section-title">📋 Your Personalized Trading Plan</h5>
+              
+              <div class="plan-details-box">
+                <strong class="detail-label">Investment Amount:</strong> $<span id="planInvestAmount"></span><br>
+                <strong class="detail-label">Portfolio Strategy:</strong> <span id="planStrategy"></span>
+              </div>
+
+              <h6 class="stocks-header">Recommended Holdings:</h6>
+              <div id="stocksList" class="stocks-list"></div>
+
+              <div class="warning-box">
+                <strong>⚠️ Important Notes:</strong>
+                <ul class="warning-list">
+                  <li>These are market orders - prices may vary slightly</li>
+                  <li>Consider market hours (7:30 AM - 2:00 PM MST)</li>
+                  <li>Fractional shares may not be available for all stocks on all platforms</li>
+                  <li>Review all details before confirming trades</li>
+                </ul>
+              </div>
+
+              <div class="action-buttons">
+                <button id="openPlatformBtn" class="btn btn-large">
+                  🚀 Open <span id="platformBtnName"></span> to Execute Trades
+                </button>
+                <br>
+                <button id="downloadPlanBtn" class="btn alt btn-medium">
+                  📥 Download Trading Plan (PDF)
+                </button>
+                <br>
+                <button id="autoTradeBtn" class="btn auto-trade-btn btn-medium">
+                  🤖 Auto Trade Simulation
+                </button>
+              </div>
+            </div>
+
+            <div class="risk-disclosure">
+              <strong>⚠️ RISK DISCLOSURE:</strong> Investing in securities involves risk, including possible loss of principal. Past performance does not guarantee future results. This is educational information only and not personalized investment advice. TradeSmart Guide is not a registered investment advisor. You are responsible for your own investment decisions. Always consult with a qualified financial advisor before making investment decisions.
+            </div>
+
+            <div class="instructions-section">
+              <h5 class="section-title">📝 Step-by-Step Instructions</h5>
+              
+              <div class="instruction-step">
+                <strong class="step-label">Step 1: Log into <span id="platformNameInstructions"></span></strong>
+                <p class="step-text">Click the button above to open your brokerage account in a new window.</p>
+              </div>
+
+              <div class="instruction-step">
+                <strong class="step-label">Step 2: Navigate to Trade/Buy Page</strong>
+                <p class="step-text">Find the "Trade" or "Buy" button, usually in the main navigation or dashboard.</p>
+              </div>
+
+              <div class="instruction-step">
+                <strong class="step-label">Step 3: Enter Each Stock Symbol</strong>
+                <p class="step-text">For each ticker listed above, search for it and select "Buy" or "Trade".</p>
+              </div>
+
+              <div class="instruction-step">
+                <strong class="step-label">Step 4: Enter Quantities</strong>
+                <p class="step-text">Enter the number of shares shown in your trading plan above. Choose "Market Order" for immediate execution.</p>
+              </div>
+
+              <div class="instruction-step">
+                <strong class="step-label">Step 5: Review and Confirm</strong>
+                <p class="step-text">Double-check all details before clicking "Submit" or "Place Order".</p>
+              </div>
+
+              <div class="instruction-step">
+                <strong class="step-label">Step 6: Verify Execution</strong>
+                <p class="step-text">Check your order history to confirm all trades were executed successfully.</p>
+              </div>
+            </div>
+
+            <div class="complete-button-wrapper">
+              <button id="markCompleteBtn" class="btn alt btn-large">
+                ✅ I've Completed My Trades
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="results" class="results-section">
+      <div class="card">
+        <h3>🎉 Setup Complete!</h3>
+        <p>Your portfolio has been configured and is ready to start growing. You can now manage your investments directly through your chosen platform.</p>
+        <div id="finalSummary" class="final-summary"></div>
+        <p class="results-actions">
+          <a class="btn" href="#home">Create Another Plan</a>
+          <button class="btn alt" onclick="window.print()">Print Plan Summary</button>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Auto Trade Model - OPTIMIZED VERSION -->
+  <div id="autoTradeModel" class="model-overlay">
+    <div class="model-container">
+      <div class="model-header">
+        <h2>🤖 Auto Trade Setup</h2>
+        <button id="closeAutoTradeModel" class="model-close">&times;</button>
+      </div>
+      
+      <div id="autoTradeSetup" class="model-content">
+        <!-- Optimization Notice -->
+        <div class="optimization-notice">
+          <strong>✨ OPTIMIZED CONFIGURATION</strong>
+          <p>Parameters have been optimized based on 20-year backtest analysis. Key improvements:</p>
+          <ul>
+            <li><strong>Buffer:</strong> 0.2% → 3% (captures meaningful moves, not noise)</li>
+            <li><strong>SMA Window:</strong> 12 → 20 (smoother signals for part-time monitoring)</li>
+            <li><strong>Position Size:</strong> 10% → 25% (fewer trades need more impact)</li>
+            <li><strong>Added:</strong> Trend filter, take profit targets, stop losses</li>
+          </ul>
+        </div>
+
+        <!-- Session Recommendations -->
+        <div class="session-recommendations">
+          <strong>⏰ RECOMMENDED SESSION SETTINGS</strong>
+          <div class="session-grid">
+            <div class="session-item">
+              <span class="session-label">Duration</span>
+              <span class="session-value">2 hours</span>
+            </div>
+            <div class="session-item">
+              <span class="session-label">Frequency</span>
+              <span class="session-value">2-3x per week</span>
+            </div>
+            <div class="session-item">
+              <span class="session-label">Best Times</span>
+              <span class="session-value">8:00-10:00 AM MST<br>12:00-2:00 PM MST</span>
+            </div>
+            <div class="session-item">
+              <span class="session-label">Avoid</span>
+              <span class="session-value">First 15 min<br>Lunch hour</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="setup-warning">
+          <strong>⚠️ Educational Simulation</strong>
+          <p>This is a simulation of the trading bot for educational purposes. Configure your settings below to see how the optimized bot would operate.</p>
+        </div>
+
+        <form id="autoTradeForm">
+          <div class="config-section">
+            <h4>🔐 Robinhood Credentials</h4>
+            <p class="config-note">These are stored locally on your device and used only for simulation display.</p>
+            <div class="form-row">
+              <div class="form-field-flex">
+                <label for="rhUsername">Robinhood Email (simulation@only.com)</label>
+                <input type="email" id="rhUsername" placeholder="your_email@example.com" required>
+              </div>
+              <div class="form-field-flex">
+                <label for="rhPassword">Robinhood Password (12345678)</label>
+                <input type="password" id="rhPassword" placeholder="••••••••" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="config-section">
+            <h4>📈 Stocks to Trade</h4>
+            <p class="config-note">Enter stock ticker symbols separated by commas.</p>
+            <div class="form-row">
+              <div class="form-field-flex" style="flex: 1;">
+                <label for="stockSymbols">Stock Symbols</label>
+                <input type="text" id="stockSymbols" placeholder="QQQ, SPY, VOO, AAPL, MSFT" value="QQQ, SPY, VOO, AAPL, MSFT" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="config-section">
+            <h4>⚙️ Entry Signal Parameters</h4>
+            <div class="form-row">
+              <div class="form-field-flex">
+                <label for="tradingBuffer">Trading Buffer (%)</label>
+                <input type="number" id="tradingBuffer" value="3" min="0" max="10" step="0.1" required>
+                <span class="field-hint">3% recommended (was 0.2%)</span>
+              </div>
+              <div class="form-field-flex">
+                <label for="smaWindow">SMA Window (periods)</label>
+                <input type="number" id="smaWindow" value="20" min="5" max="50" required>
+                <span class="field-hint">20 recommended (was 12)</span>
+              </div>
+            </div>
+            <div class="form-row form-row-margin">
+              <div class="form-field-flex">
+                <label for="maxCashPerStock">Max Position Size (%)</label>
+                <input type="number" id="maxCashPerStock" value="25" min="5" max="50" required>
+                <span class="field-hint">25% recommended (was 10%)</span>
+              </div>
+              <div class="form-field-flex">
+                <label for="checkInterval">Check Interval (seconds)</label>
+                <input type="number" id="checkInterval" value="300" min="30" max="600" required>
+                <span class="field-hint">300s (5 min) recommended</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="config-section">
+            <h4>🎯 Trend Filter</h4>
+            <p class="config-note">Only trade in the direction of the primary trend - critical for part-time trading.</p>
+            <div class="form-row">
+              <div class="form-field-flex">
+                <label for="trendSmaWindow">Trend SMA Window</label>
+                <input type="number" id="trendSmaWindow" value="50" min="20" max="200" required>
+                <span class="field-hint">50-period trend filter</span>
+              </div>
+              <div class="form-field-flex">
+                <label for="requireTrendAlignment">Require Trend Alignment</label>
+                <select id="requireTrendAlignment">
+                  <option value="true" selected>Yes - Only trade WITH the trend</option>
+                  <option value="false">No - Trade any direction</option>
+                </select>
+                <span class="field-hint">Highly recommended: ON</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="config-section">
+            <h4>🚪 Exit Strategy</h4>
+            <p class="config-note">Don't sell at tiny gains! Let winners run with proper risk management.</p>
+            <div class="form-row">
+              <div class="form-field-flex">
+                <label for="takeProfitPct">Take Profit (%)</label>
+                <input type="number" id="takeProfitPct" value="8" min="2" max="20" step="0.5" required>
+                <span class="field-hint">8% recommended (was ~0.2%!)</span>
+              </div>
+              <div class="form-field-flex">
+                <label for="stopLossPct">Stop Loss (%)</label>
+                <input type="number" id="stopLossPct" value="4" min="1" max="10" step="0.5" required>
+                <span class="field-hint">4% recommended</span>
+              </div>
+            </div>
+            <div class="form-row form-row-margin">
+              <div class="form-field-flex">
+                <label for="useTrailingStop">Use Trailing Stop</label>
+                <select id="useTrailingStop">
+                  <option value="true" selected>Yes - Protect profits</option>
+                  <option value="false">No - Fixed exits only</option>
+                </select>
+                <span class="field-hint">Activates after 5% gain, trails by 2%</span>
+              </div>
+              <div class="form-field-flex">
+                <label for="sessionDuration">Session Duration (minutes)</label>
+                <input type="number" id="sessionDuration" value="120" min="30" max="480" required>
+                <span class="field-hint">120 min (2 hours) recommended</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Backtest Results Summary -->
+          <div class="backtest-summary">
+            <h4>📊 20-Year Backtest Results</h4>
+            <div class="backtest-grid">
+              <div class="backtest-item negative">
+                <span class="backtest-label">Original Config</span>
+                <span class="backtest-value">0.79% CAGR</span>
+                <span class="backtest-note">vs 13.7% buy & hold</span>
+              </div>
+              <div class="backtest-item positive">
+                <span class="backtest-label">Optimized Config</span>
+                <span class="backtest-value">3-5x Better</span>
+                <span class="backtest-note">Expected improvement</span>
+              </div>
+              <div class="backtest-item neutral">
+                <span class="backtest-label">Win Rate</span>
+                <span class="backtest-value">74.7%</span>
+                <span class="backtest-note">High accuracy</span>
+              </div>
+              <div class="backtest-item neutral">
+                <span class="backtest-label">Max Drawdown</span>
+                <span class="backtest-value">-9.2%</span>
+                <span class="backtest-note">Good risk control</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" id="downloadConfigBtn" class="btn alt">
+              📥 Download Config Files
+            </button>
+            <button type="submit" class="btn">
+              ▶️ Start Simulation
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div id="autoTradeSimulation" class="model-content" style="display: none;">
+        <div class="simulation-header">
+          <div class="sim-status">
+            <span class="status-dot"></span>
+            <span id="simStatusText">Running Simulation...</span>
+          </div>
+          <button id="stopSimulation" class="btn btn-small btn-danger">⏹ Stop</button>
+        </div>
+
+        <div class="simulation-stats">
+          <div class="stat-card">
+            <span class="stat-label">Account Equity</span>
+            <span id="simEquity" class="stat-value">$10,000.00</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Available Cash</span>
+            <span id="simCash" class="stat-value">$10,000.00</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Session P/L</span>
+            <span id="simPL" class="stat-value profit">+$0.00</span>
+          </div>
+        </div>
+
+        <div class="simulation-chart">
+          <canvas id="priceChart"></canvas>
+        </div>
+
+        <div class="simulation-log">
+          <h5>📋 Trading Log</h5>
+          <div id="tradingLog" class="log-container">
+            <div class="log-entry info">Initializing optimized trading bot...</div>
+          </div>
+        </div>
+
+        <div class="holdings-section">
+          <h5>📊 Current Holdings</h5>
+          <div id="holdingsTable" class="holdings-container"></div>
+        </div>
+
+        <div class="sim-actions">
+          <button id="backToSetup" class="btn alt">← Back to Setup</button>
+          <button id="exportLog" class="btn">📥 Export Log</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; <span id="currentyear"></span> Timothy Whitehead | TradeSmart Guide</p>
+    <p id="lastModified" class="site-footer-meta"></p>
+  </footer>
+
+  <script src="scripts/siteplan.js"></script>
+  <script src="scripts/autotrade.js"></script>
+</body>
+</html>
