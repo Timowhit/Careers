@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timothy Whitehead - Cover Letter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --secondary: #334155;
+            --accent: #3b82f6;
+            --accent-dark: #1d4ed8;
+            --surface: #f8fafc;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --success: #10b981;
+            --border: #cbd5e1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .letter-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.4);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .letter-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--success), var(--accent-dark));
+        }
+
+        /* Header */
+        .header {
+            background: var(--primary);
+            color: white;
+            padding: 36px 48px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 4px;
+        }
+
+        .header .title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 16px;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.85);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .contact-item svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
+            opacity: 0.8;
+        }
+
+        /* Content */
+        .content {
+            padding: 48px;
+        }
+
+        .date {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 32px;
+        }
+
+        .recipient {
+            margin-bottom: 32px;
+        }
+
+        .recipient p {
+            margin-bottom: 4px;
+            color: var(--secondary);
+        }
+
+        .recipient .placeholder {
+            color: var(--accent);
+            font-weight: 500;
+            background: rgba(59, 130, 246, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .salutation {
+            margin-bottom: 24px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .body p {
+            margin-bottom: 20px;
+            color: var(--secondary);
+            text-align: justify;
+        }
+
+        .body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .metric {
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        .closing {
+            margin-top: 32px;
+        }
+
+        .closing p {
+            margin-bottom: 4px;
+            color: var(--secondary);
+        }
+
+        .signature {
+            margin-top: 28px;
+        }
+
+        .signature-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary);
+        }
+
+        .signature-title {
+            color: var(--accent-dark);
+            font-size: 0.9rem;
+        }
+
+        .signature-links {
+            margin-top: 12px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .signature-links a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .signature-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .header {
+                padding: 28px 24px;
+            }
+
+            .header h1 {
+                font-size: 1.6rem;
+            }
+
+            .contact-row {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .content {
+                padding: 32px 24px;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .letter-container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="letter-container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Timothy Whitehead</h1>
+            <div class="title">MES Systems Engineer (IT Operations)</div>
+            <div class="contact-row">
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z"/></svg>
+                    Gilbert, AZ 85298
+                </div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/></svg>
+                    (480) 868-3355
+                </div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/></svg>
+                    whiteheadt4@gmail.com
+                </div>
+            </div>
+        </header>
+
+        <!-- Content -->
+        <div class="content">
+            <div class="date">[DATE]</div>
+
+            <div class="recipient">
+                <p><span class="placeholder">[Hiring Manager Name]</span></p>
+                <p><span class="placeholder">[Company Name]</span></p>
+                <p><span class="placeholder">[Company Address]</span></p>
+            </div>
+
+            <p class="salutation">Dear <span class="placeholder">[Hiring Manager Name]</span>,</p>
+
+            <div class="body">
+                <p>
+                    I am writing to express my interest in the <span class="placeholder">[Position Title]</span> position at <span class="placeholder">[Company Name]</span>. With a strong background in <span class="highlight">MES systems engineering, manufacturing IT, and software-driven automation</span>, I bring a proven track record of building scalable solutions that deliver measurable operational impact. My experience bridging plant-floor technology with enterprise systems—combined with my ongoing pursuit of full-stack development—positions me to contribute immediately to your team.
+                </p>
+
+                <p>
+                    In my current role at Magna Steyr, I have achieved significant, quantifiable results: I <span class="metric">reduced critical operational failures by 93% monthly</span> through proactive system monitoring across MES, SCADA, and PLC integrations. My automated alerting functions <span class="metric">eliminated over 120 hours of downtime per shift</span> and <span class="metric">cut quality inspection findings by 64%</span>. These improvements saved more than <span class="metric">5 hours daily</span> of IT/Engineering involvement and strengthened visibility for KPIs, OEE, and quality metrics across 150+ users.
+                </p>
+
+                <p>
+                    Beyond my professional work, I have applied my software development skills to build an <span class="highlight">algorithmic trading platform</span> that has achieved <span class="metric">20% monthly returns with 70% consistency over two years</span>. This project demonstrates my ability to architect complex systems, work with real-time data streams, implement risk management logic, and iterate based on performance metrics—skills directly transferable to any software engineering environment.
+                </p>
+
+                <p>
+                    My technical toolkit spans <span class="highlight">Python, JavaScript, SQL, C#, and HTML/CSS</span>, alongside extensive experience with MySQL, SQL Server, SSRS, API integrations, and enterprise tools like JIRA, Confluence, and Git. I am comfortable working across the full stack—from database design and backend logic to dashboard development and user-facing interfaces. I am also fluent in Spanish, which I developed during a two-year service mission in Peru, and I am currently completing my B.S. in Computer Programming at Brigham Young University.
+                </p>
+
+                <p>
+                    I am drawn to <span class="placeholder">[Company Name]</span> because of <span class="placeholder">[specific reason: company mission, product, culture, technical challenges, etc.]</span>. I am eager to bring my blend of manufacturing systems expertise and software development skills to a role where I can build impactful, scalable solutions. I would welcome the opportunity to discuss how my background aligns with your team's goals.
+                </p>
+
+                <p>
+                    Thank you for considering my application. I look forward to the possibility of contributing to <span class="placeholder">[Company Name]</span>.
+                </p>
+            </div>
+
+            <div class="closing">
+                <p>Sincerely,</p>
+            </div>
+
+            <div class="signature">
+                <div class="signature-name">Timothy Whitehead</div>
+                <div class="signature-title">MES Systems Engineer (IT Operations)</div>
+                <div class="signature-links">
+                    <a href="#YOUR_LINKEDIN_URL">LinkedIn</a> · 
+                    <a href="#YOUR_GITHUB_URL">GitHub</a> · 
+                    <a href="#YOUR_PORTFOLIO_URL">Portfolio</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
