@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timothy Whitehead - MES Systems Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --secondary: #334155;
+            --accent: #3b82f6;
+            --accent-dark: #1d4ed8;
+            --surface: #f8fafc;
+            --surface-alt: #e2e8f0;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --success: #10b981;
+            --border: #cbd5e1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .resume-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.4);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .resume-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--success), var(--accent-dark));
+        }
+
+        /* Header */
+        .header {
+            background: var(--primary);
+            color: white;
+            padding: 48px 40px;
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(to bottom, transparent, rgba(15, 23, 42, 0.1));
+            pointer-events: none;
+        }
+
+        .header h1 {
+            font-size: 2.75rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 4px;
+        }
+
+        .header .title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 16px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.9);
+            background: rgba(255,255,255,0.08);
+            padding: 8px 14px;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.15);
+        }
+
+        .contact-item svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+            opacity: 0.8;
+        }
+
+        /* Main Layout */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+        }
+
+        .content {
+            padding: 40px;
+            border-right: 1px solid var(--border);
+        }
+
+        .sidebar {
+            padding: 40px 30px;
+            background: var(--surface);
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 36px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+        }
+
+        /* Summary */
+        .summary {
+            font-size: 1rem;
+            line-height: 1.75;
+            color: var(--secondary);
+        }
+
+        /* Experience Cards */
+        .experience-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 24px;
+            margin-bottom: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--accent);
+            border-radius: 10px 0 0 10px;
+        }
+
+        .job-header {
+            margin-bottom: 14px;
+        }
+
+        .job-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .company {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent-dark);
+        }
+
+        .duration {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-family: 'IBM Plex Mono', monospace;
+            margin-top: 4px;
+        }
+
+        .responsibilities {
+            list-style: none;
+        }
+
+        .responsibilities li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--secondary);
+        }
+
+        .responsibilities li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .metric {
+            font-weight: 700;
+            color: var(--success);
+        }
+
+        /* Skills */
+        .skill-category {
+            margin-bottom: 20px;
+        }
+
+        .skill-category-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .skill-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-item {
+            background: var(--primary);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            text-decoration: none;
+        }
+
+        .skill-item:hover {
+            background: var(--accent-dark);
+            transform: translateY(-1px);
+        }
+
+        .skill-item.clickable {
+            background: var(--accent);
+        }
+
+        .skill-item.clickable:hover {
+            background: var(--accent-dark);
+        }
+
+        /* Education */
+        .education-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 18px;
+            margin-bottom: 14px;
+        }
+
+        .school-name {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .degree {
+            color: var(--accent-dark);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .edu-details {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+
+        /* Certifications */
+        .cert-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .cert-item {
+            background: linear-gradient(135deg, var(--success), #059669);
+            color: white;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .cert-item.in-progress {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+
+        /* Languages */
+        .language-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .language-item {
+            background: var(--secondary);
+            color: white;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Projects */
+        .project-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 24px;
+            margin-bottom: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--success);
+            border-radius: 10px 0 0 10px;
+        }
+
+        .project-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .project-tech {
+            font-size: 0.85rem;
+            color: var(--accent-dark);
+            font-family: 'IBM Plex Mono', monospace;
+            margin-bottom: 12px;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 12px;
+            padding: 8px 14px;
+            background: rgba(59, 130, 246, 0.08);
+            border-radius: 6px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .project-link:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .project-link svg {
+            transition: fill 0.2s;
+        }
+
+        .project-link:hover svg {
+            fill: white;
+        }
+
+        /* Links section in sidebar */
+        .link-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 14px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: var(--primary);
+            transition: all 0.2s;
+        }
+
+        .link-item:hover {
+            border-color: var(--accent);
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        .link-item svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--accent);
+        }
+
+        .link-item span {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .content {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .sidebar {
+                padding: 30px 40px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .header {
+                padding: 30px 24px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .contact-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .content, .sidebar {
+                padding: 24px;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .resume-container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            .experience-card:hover,
+            .project-card:hover {
+                transform: none;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Timothy Whitehead</h1>
+            <div class="title">MES Systems Engineer (IT Operations)</div>
+            <div class="contact-row">
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z"/></svg>
+                    Gilbert, AZ 85298
+                </div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/></svg>
+                    (480) 868-3355
+                </div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/></svg>
+                    whiteheadt4@gmail.com
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Main Content -->
+            <main class="content">
+                <!-- Summary -->
+                <section class="section">
+                    <h2 class="section-title">Professional Summary</h2>
+                    <p class="summary">
+                        MES Systems Engineer with proven track record delivering measurable operational improvements in manufacturing IT environments. Reduced critical system failures by 93% monthly, eliminated 120+ hours of downtime per shift, and improved quality metrics by 64% through systematic approach to MES integration, automated monitoring, and data analytics. Hands-on experience with MES/SCADA systems, PLC integration, SQL databases (MySQL, SQL Server), and API-driven automation. Strong foundation in software development (Python, JavaScript, C#) complementing systems engineering expertise. Currently pursuing B.S. in Computer Programming at BYU. Adaptable professional with experience across automotive, electronics manufacturing, and production environments seeking MES engineering role where technical versatility and continuous improvement mindset drive operational excellence.
+                    </p>
+                </section>
+
+                <!-- Experience -->
+                <section class="section">
+                    <h2 class="section-title">Experience</h2>
+
+                    <div class="experience-card">
+                        <div class="job-header">
+                            <div class="job-title">MES Systems Engineer (IT Operations)</div>
+                            <div class="company">Magna Steyr</div>
+                            <div class="duration">Aug 2025 – Present</div>
+                        </div>
+                        <ul class="responsibilities">
+                            <li><strong>Reduced critical operational failures by <span class="metric">93% monthly</span></strong> by implementing proactive system monitoring and root cause analysis across MES, SCADA, and PLC integrations</li>
+                            <li><strong>Eliminated <span class="metric">120+ hours of downtime per shift monthly</span></strong> by developing automated alerting functions and streamlining incident response workflows</li>
+                            <li><strong>Decreased quality inspection findings by <span class="metric">64% monthly</span></strong> through automated MES alerting and data validation processes</li>
+                            <li><strong>Saved <span class="metric">5+ hours daily</span></strong> of IT/Engineering involvement by resolving development defects within hours of global hotfix releases</li>
+                            <li>Managed MES-SAP integrations ensuring reliable flow of production, traceability, and performance data across 150+ users</li>
+                            <li>Administered Active Directory access, supported virtualization environments, and maintained MySQL, SQL Server, and SSRS dashboards</li>
+                            <li>Led PLC integrations, Andon system troubleshooting, and HMI/scanner/terminal support during new line launches</li>
+                            <li>Created work instructions and system procedures supporting consistent, high-quality production execution</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-card">
+                        <div class="job-header">
+                            <div class="job-title">Production Operator</div>
+                            <div class="company">Magna Steyr</div>
+                            <div class="duration">Oct 2024 – Aug 2025</div>
+                        </div>
+                        <ul class="responsibilities">
+                            <li>Performed assembly, inspection, and rework of automotive components in fast-paced production environment</li>
+                            <li>Conducted visual and functional inspections identifying non-conforming parts, ensuring compliance with quality standards</li>
+                            <li>Operated and maintained machinery, reported malfunctions, and assisted in equipment troubleshooting</li>
+                            <li>Collaborated with quality and engineering teams to execute rework procedures and support process improvements</li>
+                            <li>Applied 5S/MaFact principles maintaining organized, efficient, and safe workstation</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-card">
+                        <div class="job-header">
+                            <div class="job-title">Volunteer Team Leader</div>
+                            <div class="company">The Church of Jesus Christ of Latter-day Saints — Peru</div>
+                            <div class="duration">Jan 2021 – Feb 2023</div>
+                        </div>
+                        <ul class="responsibilities">
+                            <li>Led teams of 8-12 volunteers, coordinating schedules, training, and goal-setting initiatives across multiple regions</li>
+                            <li>Developed fluent Spanish proficiency through daily immersion and formal study</li>
+                            <li>Adapted communication strategies across diverse cultural and socioeconomic contexts</li>
+                            <li>Provided community service and humanitarian support demonstrating commitment to teamwork and service</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-card">
+                        <div class="job-header">
+                            <div class="job-title">Pyrotechnic Technician</div>
+                            <div class="company">Special Devices Inc.</div>
+                            <div class="duration">Jun 2020 – Jan 2021</div>
+                        </div>
+                        <ul class="responsibilities">
+                            <li>Assembled, tested, and reworked complex electronic and pyrotechnic systems for automotive airbag initiators</li>
+                            <li>Calibrated and maintained automated machinery and test equipment in high-precision environments</li>
+                            <li>Interpreted schematics, blueprints, and technical documentation ensuring assembly accuracy</li>
+                            <li>Adhered to strict FDA/ISO compliance, quality control, and safety standards handling explosive materials</li>
+                            <li>Collaborated with engineers to improve reliability and process efficiency in propellant testing operations</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Projects -->
+                <section class="section">
+                    <h2 class="section-title">Projects</h2>
+
+                    <div class="project-card">
+                        <div class="project-title">Algorithmic Trading Platform</div>
+                        <div class="project-tech">Python • Robinhood API • Real-time Data Processing</div>
+                        <ul class="responsibilities">
+                            <li><strong>Achieved <span class="metric">20% monthly returns with 70% consistency over 2 years</span></strong> through custom algorithmic trading strategies</li>
+                            <li>Built modular system for automating stock, options, and crypto trades with real-time order tracking</li>
+                            <li>Implemented risk management, filtering logic, and custom export tools for performance analysis</li>
+                        </ul>
+                        <a href="https://timowhit.github.io/Trading-Bot" class="project-link">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                            View on GitHub →
+                        </a>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-title">Trading Analytics Dashboard</div>
+                        <div class="project-tech">HTML • CSS • JavaScript • Data Visualization</div>
+                        <ul class="responsibilities">
+                            <li>Developed front-end dashboard to visualize trading data and performance trends</li>
+                            <li>Designed backend logic for processing trade history and equity reports</li>
+                        </ul>
+                        <a href="https://timowhit.github.io/Trading-Bot/templates/dashboard.html" class="project-link">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                            View on GitHub →
+                        </a>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- Links -->
+                <section class="section">
+                    <h2 class="section-title">Links</h2>
+                    <a href="https://www.linkedin.com/in/t-whitehead/" class="link-item">
+                        <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://www.github.com/timowhit/" class="link-item">
+                        <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://timowhit.github.io/Careers" class="link-item">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                        <span>Portfolio</span>
+                    </a>
+                </section>
+
+                <!-- Skills -->
+                <section class="section">
+                    <h2 class="section-title">Skills</h2>
+
+                    <div class="skill-category">
+                        <div class="skill-category-title">Languages</div>
+                        <div class="skill-grid">
+                            <span class="skill-item clickable">Python</span>
+                            <span class="skill-item clickable">JavaScript</span>
+                            <span class="skill-item clickable">SQL</span>
+                            <span class="skill-item clickable">C#</span>
+                            <span class="skill-item clickable">HTML/CSS</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <div class="skill-category-title">MES & Industrial</div>
+                        <div class="skill-grid">
+                            <span class="skill-item">Ignition SCADA</span>
+                            <span class="skill-item">PRODAP</span>
+                            <span class="skill-item">PLC Integration</span>
+                            <span class="skill-item">HMI Systems</span>
+                            <span class="skill-item">Andon Systems</span>
+                            <span class="skill-item">FANUC/Dürr</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <div class="skill-category-title">Data & Infrastructure</div>
+                        <div class="skill-grid">
+                            <span class="skill-item">MySQL</span>
+                            <span class="skill-item">SQL Server</span>
+                            <span class="skill-item">SSRS</span>
+                            <span class="skill-item">API Integration</span>
+                            <span class="skill-item">Active Directory</span>
+                            <span class="skill-item">SAP Integration</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <div class="skill-category-title">Tools & Methods</div>
+                        <div class="skill-grid">
+                            <span class="skill-item">Git</span>
+                            <span class="skill-item">VS Code</span>
+                            <span class="skill-item">JIRA</span>
+                            <span class="skill-item">Confluence</span>
+                            <span class="skill-item">SharePoint</span>
+                            <span class="skill-item">Root Cause Analysis</span>
+                            <span class="skill-item">5S/Lean</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Certifications -->
+                <section class="section">
+                    <h2 class="section-title">Certifications</h2>
+                    <div class="cert-grid">
+                        <div class="cert-item in-progress">CAPM (In Progress — 70%)</div>
+                        <div class="cert-item">CPR/AED Certified</div>
+                        <div class="cert-item">Fire Safety & Suppression</div>
+                        <div class="cert-item">Hydraulic Tools Safety</div>
+                        <div class="cert-item">Universal Waste Control</div>
+                        <div class="cert-item">MaFact/5S Training</div>
+                    </div>
+                </section>
+
+                <!-- Education -->
+                <section class="section">
+                    <h2 class="section-title">Education</h2>
+                    <div class="education-card">
+                        <div class="school-name">Brigham Young University</div>
+                        <div class="degree">B.S. Computer Programming</div>
+                        <div class="edu-details">
+                            Expected: Sept 2027 • GPA: 3.1<br>
+                            PathwayConnect Program<br>
+                            Data Structures, Database Systems, Web Development, Software Engineering, Networks
+                        </div>
+                    </div>
+                    <div class="education-card">
+                        <div class="school-name">Basha High School</div>
+                        <div class="degree">High School Diploma</div>
+                        <div class="edu-details">
+                            2017 – 2021 • GPA: 3.0 • Honors Graduate
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Languages -->
+                <section class="section">
+                    <h2 class="section-title">Languages</h2>
+                    <div class="language-grid">
+                        <span class="language-item">English (Native)</span>
+                        <span class="language-item">Spanish (Fluent)</span>
+                        <span class="language-item">Japanese (Basic)</span>
+                    </div>
+                </section>
+            </aside>
+        </div>
+    </div>
+</body>
+</html>
