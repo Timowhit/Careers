@@ -1,6 +1,6 @@
 # MES SYSTEMS ENGINEER - JOB APPLICATION STRATEGY GUIDE
 
-**Timothy Whitehead | January 2026**
+## Timothy Whitehead | January 2026
 
 ---
 
@@ -205,15 +205,15 @@
 
 ### **Your Core Value Proposition:**
 
-*"I'm an MES Systems Engineer who delivers measurable results: I reduced critical failures 93%, eliminated 120+ hours of monthly downtime, and improved quality metrics 64%. I bridge the gap between software engineering and manufacturing - I understand both the shop floor and the code that runs it."*
+"I'm an MES Systems Engineer who delivers measurable results: I reduced critical failures 93%, eliminated 120+ hours of monthly downtime, and improved quality metrics 64%. I bridge the gap between software engineering and manufacturing - I understand both the shop floor and the code that runs it."
 
 ### **Addressing the Short Tenure Question:**
 
-*"I was promoted from Production Operator to MES Systems Engineer in 10 months based on the results I delivered. During that time, I identified automation opportunities and system inefficiencies that I'm now solving in my engineering role. My rapid promotion demonstrates my ability to quickly understand complex systems and deliver value."*
+"I was promoted from Production Operator to MES Systems Engineer in 10 months based on the results I delivered. During that time, I identified automation opportunities and system inefficiencies that I'm now solving in my engineering role. My rapid promotion demonstrates my ability to quickly understand complex systems and deliver value."
 
 ### **Addressing the Incomplete Degree:**
 
-*"I'm currently pursuing my B.S. in Computer Programming at BYU with a 3.1 GPA while working full-time. I've already completed coursework in data structures, databases, software engineering, and network fundamentals - skills I apply daily in my current role. I expect to graduate in September 2027."*
+"I'm currently pursuing my B.S. in Computer Programming at BYU with a 3.1 GPA while working full-time. I've already completed coursework in data structures, databases, software engineering, and network fundamentals - skills I apply daily in my current role. I expect to graduate in September 2027."
 
 ### **Salary Negotiation Framework:**
 
@@ -400,4 +400,4 @@ For each company, find 2-3 employees:
 
 **Questions? Need help with specific applications or interview prep? Let me know.**
 
-**Good luck! 🚀**
+Good luck! 🚀
